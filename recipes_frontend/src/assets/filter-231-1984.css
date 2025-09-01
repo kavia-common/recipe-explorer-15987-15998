@@ -1,0 +1,190 @@
+ /* Screen: Filter (231:1984) */
+
+.filter-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Rectangle 647 background section height 450 from figma; we keep panel backdrop for top portion */
+.panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 450px;
+  background: var(--color-ffffff);
+}
+
+/* Header */
+.header {
+  position: absolute;
+  left: 30px; /* frame left padding inferred from other screens */
+  top: 31px;  /* text y -71 relative to frame top -> approx 31 from top of artboard considering 812 artboard; match visual rhythm */
+}
+.title {
+  margin: 0;
+  font-family: var(--font-poppins);
+  font-size: var(--typo-98-size);
+  font-weight: var(--typo-98-weight);
+  line-height: var(--typo-98-line);
+  color: var(--typo-98-color);
+}
+
+/* Section blocks positioning per figma y's mapped into rhythm */
+.group.time-sort {
+  position: absolute;
+  left: 30px;
+  top: 70px; /* around -30 in figma; align under header */
+  width: calc(100% - 60px);
+}
+.group.rate {
+  position: absolute;
+  left: 30px;
+  top: 145px; /* figma ~48 y; placed below time chips */
+  width: calc(100% - 60px);
+}
+.group.category {
+  position: absolute;
+  left: 30px;
+  top: 235px; /* figma 127 y; placed further down */
+  width: calc(100% - 60px);
+}
+
+.section-title {
+  margin: 0 0 12px 0;
+  font-family: var(--font-poppins);
+  font-size: var(--typo-98-size);
+  font-weight: var(--typo-98-weight);
+  line-height: var(--typo-98-line);
+  color: var(--typo-98-color);
+}
+
+/* Chips container */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px; /* visual spacing between chips */
+}
+
+/* Chip base: style_78 (outline) and style_81 (filled) */
+.chip {
+  height: 27px; /* per figma components size */
+  padding: 4px 10px; /* calculated to match heights with text line-height ~16.5 inside */
+  border-radius: var(--radius-10);
+  font-family: var(--font-poppins);
+  font-size: var(--typo-99-size);
+  line-height: var(--typo-99-line);
+  border: 1px solid var(--color-71b1a1);
+  background: var(--color-ffffff);
+  color: var(--color-71b1a1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.chip-outline {
+  /* already matches style_78 */
+}
+
+.chip-filled {
+  background: var(--color-129575); /* style_81 background */
+  border-color: var(--color-ffffff);
+  color: var(--color-ffffff);
+}
+
+.chip .chip-text {
+  color: var(--color-71b1a1); /* typo_101 and typo_99 */
+  font-size: var(--typo-101-size);
+  font-weight: var(--typo-101-weight);
+  line-height: var(--typo-101-line);
+}
+.chip-filled .text-on-filled,
+.chip-filled .chip-text {
+  color: var(--color-ffffff); /* typo_102/100 */
+}
+
+/* Stars: style_80 (solid with 71b1a1) and style_83 (outline/white) */
+.star {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  position: relative;
+}
+.star-solid::before,
+.star-outline::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>') no-repeat center / contain;
+        mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>') no-repeat center / contain;
+}
+.star-solid::before { background: var(--color-71b1a1); }  /* style_80 */
+.star-outline::before { background: var(--color-ffffff); } /* style_83 used on filled chip */
+
+.chip-with-star {
+  padding-right: 8px;
+}
+
+/* Actions area: button "Filter" (Small Button 174x37) using style_11 */
+.actions {
+  position: absolute;
+  left: 30px;
+  top: 375px; /* figma ~289; map within flow under categories */
+  width: calc(100% - 60px);
+}
+.btn-primary {
+  width: 174px;
+  height: 37px;
+  background: var(--color-129575);
+  border-radius: var(--radius-10);
+  border: none;
+  color: var(--color-ffffff);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-primary .label {
+  font-family: var(--font-poppins);
+  font-size: var(--typo-103-size);
+  font-weight: var(--typo-103-weight);
+  line-height: var(--typo-103-line);
+  color: var(--typo-103-color);
+}
+
+/* Home indicator (style_32) */
+.home-indicator {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 8px;
+  height: 34px;
+}
+.home-indicator .bar {
+  width: 135px;
+  height: 5px;
+  border-radius: var(--radius-100);
+  background: var(--color-121212);
+  margin: 0 auto;
+  position: relative;
+  top: 14px;
+}
+
+/* Interaction feedback */
+.chip:focus-visible,
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-129575);
+  outline-offset: 2px;
+}
+.chip:hover { opacity: 0.9; }
+.btn-primary:hover { opacity: 0.95; }
+
+/* Responsive: make artboard full-bleed for small screens */
+@media (max-width: 420px) {
+  .artboard {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+}

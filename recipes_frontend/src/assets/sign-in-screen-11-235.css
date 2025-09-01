@@ -1,0 +1,247 @@
+/* Screen: Sign In (11:235) */
+
+.signin-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0; /* Figma frame starts at top-left */
+}
+
+/* Status Bar (approximate visual) positioned at top (44px height) */
+.status-bar {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  height: 44px;
+}
+.status-bar .time {
+  position: absolute;
+  left: 29px; top: 12px; /* from x=426 to 455.5 diff ~29.5, y offset 14 from -430 frame top to -416 text -> 14 */
+  font-family: var(--font-sf-pro);
+  font-size: var(--typo-67-size);
+  font-weight: var(--typo-67-weight);
+  line-height: var(--typo-67-line);
+  color: var(--typo-67-color);
+}
+
+/* Title group "Hello," + "Welcome Back!" based on their y positions (-336 and -291 relative to frame top -430 -> 94 and 139 from artboard top) */
+.title-group {
+  position: absolute;
+  left: 30px; /* frame x 426 -> element x 456 => 30px from left */
+  top: 94px;
+  width: 315px; /* allow comfortable width */
+}
+.title-group .hello {
+  margin: 0;
+  font-family: var(--font-poppins);
+  font-size: var(--typo-60-size);
+  font-weight: var(--typo-60-weight);
+  line-height: var(--typo-60-line);
+  color: var(--typo-60-color);
+}
+.title-group .welcome {
+  margin: 4px 0 0 0;
+  font-family: var(--font-poppins);
+  font-size: var(--typo-61-size);
+  font-weight: var(--typo-61-weight);
+  line-height: var(--typo-61-line);
+  color: var(--typo-61-color);
+}
+
+/* Input fields */
+.form {
+  position: absolute;
+  left: 30px;
+  width: 315px;
+}
+
+/* Email field block: y -204 relative to -430 => 226px from top for label top; rectangle at -178 => 252 */
+.form-email {
+  top: 226px;
+}
+.form-password {
+  /* Password label y = -93 relative to -430 => 337 from top */
+  top: 337px;
+}
+
+.input-block {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.input-block label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-poppins);
+  font-size: var(--typo-66-size);
+  line-height: var(--typo-66-line);
+  font-weight: var(--typo-66-weight);
+  color: var(--typo-66-color);
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  height: 55px; /* as per rectangle */
+  border: 1.5px solid var(--color-d9d9d9); /* style_30 border */
+  border-radius: var(--radius-10);
+  background: var(--color-ffffff);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.input-wrapper input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  font-size: 14px;
+  color: var(--color-121212);
+}
+
+.input-wrapper input::placeholder {
+  font-family: var(--font-poppins);
+  font-size: var(--typo-65-size);
+  line-height: var(--typo-65-line);
+  color: var(--typo-65-color);
+}
+
+/* Forgot Password link at y = 8 relative to frame top 0 -> 8 + 430 = top? In final layout, align near password field bottom */
+.forgot-password {
+  position: absolute;
+  right: 30px;
+  top: 418px; /* password rectangle top 362 (from -67 to -430 => 363), plus ~56; adjusted to match 8 relative in group zone */
+  font-family: var(--font-poppins);
+  font-size: var(--typo-62-size);
+  line-height: var(--typo-62-line);
+  font-weight: var(--typo-62-weight);
+  color: var(--typo-62-color);
+  text-decoration: none;
+}
+
+/* CTA "Big Button" at y=50 => from frame top -> 50+430 = 480; but we keep as absolute based on left 30 and explicit top 480 */
+.cta {
+  position: absolute;
+  left: 30px;
+  top: 480px;
+  width: 315px;
+  height: 60px;
+  background: var(--color-129575); /* style_11 background */
+  border-radius: var(--radius-10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  color: var(--color-ffffff);
+}
+
+.cta .label {
+  font-family: var(--font-poppins);
+  font-size: var(--typo-58-size);
+  font-weight: var(--typo-58-weight);
+  line-height: var(--typo-58-line);
+  color: var(--typo-58-color);
+}
+
+/* Arrow icon placeholder */
+.cta .icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+/* "Or Sign in With" lines group at y=130 from frame top => top: 130 */
+.or-with {
+  position: absolute;
+  left: 30px;
+  top: 560px; /* 130 from frame top maps poorly in flow; place below CTA per visual rhythm */
+  width: 315px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+}
+.or-with .line {
+  height: 0;
+  border-top: 1px solid var(--color-d9d9d9); /* style_28 */
+}
+.or-with .text {
+  font-family: var(--font-poppins);
+  font-size: var(--typo-64-size);
+  font-weight: var(--typo-64-weight);
+  line-height: var(--typo-64-line);
+  color: var(--typo-64-color);
+}
+
+/* Social buttons (two) at y=167 -> we anchor below the divider as chips with style_126 */
+.socials {
+  position: absolute;
+  left: 30px;
+  top: 595px;
+  display: flex;
+  gap: 25px;
+}
+.social-btn {
+  width: 44px;
+  height: 44px;
+  background: var(--color-ffffff);
+  border-radius: var(--radius-10);
+  box-shadow: var(--shadow-0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+.social-btn .svg {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+/* Bottom text "Don’t have an account? Sign up" at y=266 -> place near bottom above home indicator */
+.footer-text {
+  position: absolute;
+  left: 99px; /* centered: (375-177)/2 = 99 */
+  bottom: 70px; /* above home indicator */
+  font-family: var(--font-poppins);
+  font-size: var(--typo-63-size);
+  font-weight: var(--typo-63-weight);
+  line-height: var(--typo-63-line);
+  color: var(--typo-63-color);
+}
+.footer-text a {
+  color: var(--color-129575);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Home Indicator at bottom: style_32 bar centered */
+.home-indicator {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 8px;
+  height: 34px;
+}
+.home-indicator .bar {
+  width: 135px;
+  height: 5px;
+  border-radius: var(--radius-100);
+  background: var(--color-121212);
+  margin: 0 auto;
+  position: relative;
+  top: 14px;
+}
+
+/* Responsive hint: center the artboard on small screens */
+@media (max-width: 420px) {
+  .artboard {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+  .footer-text { left: 50%; transform: translateX(-50%); }
+}
